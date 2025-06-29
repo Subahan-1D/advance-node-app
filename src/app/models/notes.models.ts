@@ -1,8 +1,9 @@
-// model er code 
+// model er code
 
 import { model, Schema } from "mongoose";
+import { INotes } from "../interfaces/notes.interface";
 
-const noteSchema = new Schema(
+const noteSchema = new Schema<INotes>(
   {
     title: { type: String, require: true, trim: true },
     content: { type: String, default: "" },
