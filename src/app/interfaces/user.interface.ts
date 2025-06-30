@@ -1,3 +1,5 @@
+import { join } from "path";
+
 export interface IAddress {
   city: string;
   street: string;
@@ -11,4 +13,7 @@ export interface IUser {
   password: string;
   role: "user" | "admin";
   address: IAddress;
+}
+export interface userInstanceMethod {
+  hashPassword(password: string): string ;
 }
