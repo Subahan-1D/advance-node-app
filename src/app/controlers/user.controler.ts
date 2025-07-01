@@ -22,17 +22,22 @@ userRoutes.post("/create-user", async (req: Request, res: Response) => {
     // const password = await bcyrpt.hash(body.password, 10);
     // console.log(password)
 
-    // const users = await User.create(body);
+    // const password = await User.hashPassword(body.password);
+    // console.log("static", password);
+    // body.password = password;
 
-    const user = new User(body);
-    const password = await user.hashPassword(body.password);
-    user.password = password;
-    await user.save();
+    const users = await User.create(body);
+
+    // const user = new User(body);
+    // const password = await user.hashPassword(body.password);
+    // user.password = password;
+
+    // await user.save();
 
     res.status(201).json({
       success: true,
       message: "User Create Successfully",
-      user,
+      users,
     });
   } catch (error: any) {
     console.log(error);

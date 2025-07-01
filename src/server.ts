@@ -5,13 +5,15 @@ import { Server } from "http";
 import app from "./app";
 import mongoose from "mongoose";
 
-const url = 'mongodb+srv://advanceNodeApp:munippmqDybWVfiE@cluster0.yqmtelq.mongodb.net/advance-node-app?retryWrites=true&w=majority&appName=Cluster0'
+import dotenv from "dotenv";
+dotenv.config();
+
 let server: Server;
 const PORT = 8000;
 async function main() {
   try {
-    await mongoose.connect(url)
-    console.log("Connecting to mongodb using mongoose !!")
+    await mongoose.connect(process.env.MONGODB_URI as string);
+    console.log("Connecting to mongodb using mongoose !!");
     server: app.listen(PORT, () => {
       console.log(`App is the listening on port : ${PORT}`);
     });

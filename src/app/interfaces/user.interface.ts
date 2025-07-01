@@ -1,3 +1,4 @@
+import { Model } from "mongoose";
 import { join } from "path";
 
 export interface IAddress {
@@ -15,5 +16,9 @@ export interface IUser {
   address: IAddress;
 }
 export interface userInstanceMethod {
-  hashPassword(password: string): string ;
+  hashPassword(password: string): string;
+}
+
+export interface userStaticMethod extends Model<IUser> {
+  hashPassword(password: string): string;
 }
